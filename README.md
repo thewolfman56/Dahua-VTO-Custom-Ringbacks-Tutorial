@@ -138,14 +138,14 @@ Go to Network → SIP Server
     - Create a Label
       - [meowmix-music]
     - Create some functions
-      - exten => s,1,Dial(PJSIP/8004&amp;PJSIP/8005,30,m(MeowMix))
+      - exten => s,1,Dial(PJSIP/8004&PJSIP/8005,30,m(MeowMix))
       - exten => 9001,2,Hangup()
     - looking at the first line, here is how it is used
       - s → specifically defined extension in Asterisk
       - 1 → priority of the function for the specific function label we created
       - Dial → instruction
-      - PJSIP/8004&amp;PJSIP/8005
-        - these are the specif extensions that will receive the call from the VTO
+      - PJSIP/8004&PJSIP/8005
+        - these are the specific extensions that will receive the call from the VTO
         - if you want more extensions called (example a SIP extension 8006), then it would look like:
           - exten => s,1,Dial(SIP/8006,30,m(MeowMix))
         - I have not figured out the syntax for Virtual Extensions or Ring Groups, yet here.
