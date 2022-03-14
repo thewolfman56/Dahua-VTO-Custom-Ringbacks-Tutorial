@@ -44,6 +44,8 @@ Create a pjSIP extension for your VTO in freePBX
     - Ring-Group Number → 8999 (any number you want, but remember it)
     - Group Description → Quick description of this ring group
     - Extension List → List each extension you want to ring as a group on separate lines
+    - Destination if no answer → Voicemail
+      -   Select a main extension with (Busy)
     - Click Submit
     - Click Apply Config
 
