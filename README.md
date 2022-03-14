@@ -16,7 +16,7 @@ Create a pjSIP extension for your VTO in freePBX
 
     - Type → SIP [chan\_pjsip]
     - Extension Number → The extension of your VTO (I used 8001)
-    - Display Name → What you want your caller ID to show up as (I used &quot;Doorbell&quot;)
+    - Display Name → What you want your caller ID to show up as (I used Doorbell)
     - Outbound Caller ID → Leave this blank
     - Email Address → Leave this blank
   - Click Next
