@@ -1,6 +1,5 @@
 # Dahua-VTO-Custom-Ringbacks-Tutorial
-Tutorial for using custom ringbacks with Dahua VTOs and freePBX
-Custom Ringbacks on Dahua VTO through PBX
+Tutorial for using custom ringbacks with Dahua VTOs and freePBX with automatic changes for holidays, events, birthdays, time of day, etc.
 
 Based on original information found at
 
