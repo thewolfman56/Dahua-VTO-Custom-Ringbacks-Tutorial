@@ -1,0 +1,27 @@
+[from-internal-custom]
+exten => 9001,1,Ringing()
+exten => 9001,2,Answer()
+exten => 9001,3,GotoIfTime(00:00-23:59,*,*,oct?halloween-music,s,1)
+exten => 9001,4,GotoIfTime(00:00-23:59,*,1-26,dec?christmas-music,s,1)
+exten => 9001,5,GotoIfTime(00:00-23:59,*,10-24,mar?irish-music,s,1)
+exten => 9001,6,Goto(meowmix-music,s,1)
+
+[halloween-music]
+exten => s,1,Dial(PJSIP/8004&PJSIP/8005,30,m(Halloween))
+exten => 9001,2,Hangup()
+
+[christmas-music]
+exten => s,1,Dial(PJSIP/8004&PJSIP/8005,30,m(Christmas))
+exten => 9001,2,Hangup()
+
+[irish-music]
+exten => s,1,Dial(PJSIP/8004&PJSIP/8005,30,m(Irish))
+exten => 9001,2,Hangup()
+
+[meowmix-music]
+exten => s,1,Dial(PJSIP/8004&PJSIP/8005,30,m(MeowMix))
+exten => 9001,2,Hangup()
+
+[default-music]
+exten => s,1,Dial(PJSIP/8004&PJSIP/8005,30,m)
+exten => 9001,2,Hangup()
