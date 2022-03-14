@@ -6,7 +6,7 @@ Based on original information found at
 
 [https://www.reddit.com/r/homeassistant/comments/kb7oxz/merry\_christmas\_with\_dahua\_vto\_home\_assistant\_and/](https://www.reddit.com/r/homeassistant/comments/kb7oxz/merry_christmas_with_dahua_vto_home_assistant_and/)
 
-**1. Setup freePBX**
+<h2>1. Setup freePBX</h2>
 
 Create a pjSIP extension for your VTO in freePBX
 
@@ -74,7 +74,7 @@ Create a pjSIP extension for your VTO in freePBX
       - Click Submit
       - Click Apply Config
 
-**2. Setup Dahua VTO (example for my VTO model)**
+<h2>2. Setup Dahua VTO (example for my VTO model)</h2>
 
 - Log into VTO webpage and go to Local Settings
 
@@ -107,7 +107,7 @@ Go to Network → SIP Server
 - SIP Server Password → I used the same secret for Extension 8001 here
 - Click Save
 
-**3. Additional freePBX Setup**
+<h2>3. Additional freePBX Setup</h2>
 
 - Go to Settings → Music on Hold
   - Click +Add Category
@@ -135,20 +135,20 @@ Go to Network → SIP Server
     - Click Apply Config
 - Go to Admin → Config Edit
 - Click extensions\_custom.conf (this is where all of the details come into play)
-  - First, let&#39;s create some music categories for the ringback
+  - First, let's create some music categories for the ringback
     - Create a Label
       - [meowmix-music]
     - Create some functions
-      - exten =\&gt; s,1,Dial(PJSIP/8004&amp;PJSIP/8005,30,m(MeowMix))
-      - exten =\&gt; 9001,2,Hangup()
+      - exten => s,1,Dial(PJSIP/8004&amp;PJSIP/8005,30,m(MeowMix))
+      - exten => 9001,2,Hangup()
     - looking at the first line, here is how it is used
       - s → specifically defined extension in Asterisk
       - 1 → priority of the function for the specific function label we created
-      - Dial –\&gt; instruction
+      - Dial → instruction
       - PJSIP/8004&amp;PJSIP/8005
         - these are the specif extensions that will receive the call from the VTO
         - if you want more extensions called (example a SIP extension 8006), then it would look like:
-          - exten =\&gt; s,1,Dial(SIP/8006,30,m(MeowMix))
+          - exten => s,1,Dial(SIP/8006,30,m(MeowMix))
         - I have not figured out the syntax for Virtual Extensions or Ring Groups, yet here.
       - 30 → the time in seconds the ringback plays
       - m(MeowMix) → the On Hold Music category we are selecting for this category
@@ -165,16 +165,16 @@ Go to Network → SIP Server
     - create the label
       - [from-internal-custom]
     - Define the functions
-      - exten =\&gt; 9001,1,Ringing()
+      - exten => 9001,1,Ringing()
         - tells the system if 9001 is dialed to ring as 1st priority
-      - exten =\&gt; 9001,2,Answer()
+      - exten => 9001,2,Answer()
         - Allows extension 9001 to be answered as the 2nd priority
-      - exten =\&gt; 9001,3,GotoIfTime(00:00-23:59,\*,\*,oct?halloween-music,s,1)
+      - exten => 9001,3,GotoIfTime(00:00-23:59,\*,\*,oct?halloween-music,s,1)
         - Priority is important here as the highest priority (lowest number) match will take priority over any other match
         - We use the GotoIfTime function to automate the parameters of when a specific music On Hold Category will be played category
           - The syntax of GotoIfTime for our example is:
-          - GotoIfTime(\&lt;time range\&gt;, \&lt;days of week range\&gt;, \&lt;days of month range\&gt;, \&lt;months range\&gt;?[Label if true],[extension],[priority])
-            - So our example will play Halloween Music, any time, and any day, and any date in October
-            - See line 6 in the photo for an example that is a little more defined around St. Patrick&#39;s Day
+          - GotoIfTime(<time range>,<days of week range>,<days of month range>,<months range>?[Label if true],[extension],[priority])
+            - So our example will play Halloween Music any time, any day, and on any date in October
+            - See line 6 in the photo for an example that is a little more defined around St. Patrick's Day
       - The last line for this label, use Goto for the default ringtone music Group you want to use
  - Click Save and then Apply Config (may have to reboot freePBX to take effect)
